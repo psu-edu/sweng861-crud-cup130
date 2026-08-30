@@ -47,7 +47,38 @@ npm install
 
 ### Run the Application
 
-Application startup instructions will be added once the initial backend application has been implemented.
+Start the Node.js backend application from the project root:
+
+```bash
+npm start
+```
+
+By default, the application will run at:
+
+```text
+http://localhost:3000
+```
+
+### API Endpoints
+
+The following endpoints are currently available:
+
+* `GET /health` – Verifies that the API is running and returns a status response.
+* `GET /api/hello` – Returns a simple "Hello, World!" response.
+
+Example:
+
+```bash
+curl http://localhost:3000/health
+```
+
+Expected response:
+
+```json
+{
+  "status": "ok"
+}
+```
 
 ## Project Status
 
@@ -57,4 +88,4 @@ The specific CRUD application is currently **TBD**.
 
 ## AI Use
 
-Generative AI was used to assist in the preparation and formatting of this README file. 
+Generative AI was used to assist with project documentation, and the creation of code logic block comments.

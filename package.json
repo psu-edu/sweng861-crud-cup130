@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "name": "sweng861-crud-cup130",
+  "version": "1.0.0",
+  "description": "**Author:** Charles Patterson\r **Course:** SWENG 861 – Software Construction\r **Program:** Penn State University - Master of Software Engineering",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+     "start": "node backend/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cup130/sweng861-crud-cup130.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/cup130/sweng861-crud-cup130/issues"
+  },
+  "homepage": "https://github.com/cup130/sweng861-crud-cup130#readme"
+}
