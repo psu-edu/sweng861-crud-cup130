@@ -8,7 +8,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-     "start": "node backend/app.js"
+    "start": "node backend/app.js",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,10 @@
   "bugs": {
     "url": "https://github.com/cup130/sweng861-crud-cup130/issues"
   },
-  "homepage": "https://github.com/cup130/sweng861-crud-cup130#readme"
+  "homepage": "https://github.com/cup130/sweng861-crud-cup130#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.10.0",
+    "globals": "^17.12.0"
+  }
 }

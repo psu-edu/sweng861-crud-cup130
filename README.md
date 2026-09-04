@@ -1,14 +1,14 @@
-# SWENG 861 – Software Construction CRUD Project
+# SWENG 861 – Software Construction CRUD Project - Campus Rental (Housing)
 
-**Author:** Charles Patterson
-**Course:** SWENG 861 – Software Construction
+**Author:** Charles Patterson 
+**Course:** SWENG 861 – Software Construction 
 **Program:** Penn State University - Master of Software Engineering
 
 ## Project Overview
 
 This repository contains the course project for SWENG 861 – Software Construction. The project will be developed throughout the course and will demonstrate software construction practices through the implementation of a CRUD (Create, Read, Update, Delete) application.
 
-The specific application and its requirements are currently **TBD** and will be updated as the project is defined.
+The selected project is **Project B: Campus Rental (Housing)**.
 
 ## Technology Stack
 
@@ -16,6 +16,7 @@ The project will primarily use the following technologies:
 
 * **Node.js** – Application runtime
 * **JavaScript** – Primary programming language
+* **Express** – Backend web application framework
 * **Git** – Source control
 * **GitHub** – Repository hosting and collaboration
 * **ESLint** – Static code analysis and linting
@@ -31,12 +32,25 @@ Additional frameworks, databases, and services will be documented as they are in
 * Git
 * Node.js
 * npm
+* Visual Studio Code
+
+### Recommended VS Code Extensions
+
+The following Visual Studio Code extensions are recommended for development:
+
+* **ESLint** – JavaScript linting and static code analysis
+* **Prettier - Code formatter** – Consistent source code formatting
+* **GitHub Pull Requests** – GitHub pull request and issue integration
+* **Docker** – Docker and container development support
+* **Azure Resources** – Azure resource integration
+* **REST Client** – API testing directly from Visual Studio Code
+* **GitHub Copilot** – Generative AI development assistance
 
 ### Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd <repository-directory>
+git clone https://github.com/psu-edu/sweng861-crud-cup130.git
+cd sweng861-crud-cup130
 ```
 
 ### Install Dependencies
@@ -84,8 +98,10 @@ Expected response:
 
 **Current Status:** Initial project setup
 
-The specific CRUD application is currently **TBD**.
+**Selected Project:** Project B: Campus Rental (Housing)
+
+The application is currently in the initial development phase. Additional functionality will be implemented throughout the course.
 
 ## AI Use
 
-Generative AI was used to assist with project documentation, and the creation of code logic block comments.
+Generative AI was used to assist with project documentation and the creation of code logic block comments.
