@@ -1,4 +1,4 @@
-# SWENG 861 – Software Construction CRUD Project - Campus Rental (Housing)
+# SWENG 861 – Software Construction CRUD Weekly Project
 
 **Author:** Charles Patterson 
 **Course:** SWENG 861 – Software Construction 
@@ -6,9 +6,9 @@
 
 ## Project Overview
 
-This repository contains the course project for SWENG 861 – Software Construction. The project will be developed throughout the course and will demonstrate software construction practices through the implementation of a CRUD (Create, Read, Update, Delete) application.
+This repository contains coursework and development exercises for SWENG 861 – Software Construction. The repository will be used throughout the course to implement, test, and demonstrate software construction concepts and development practices.
 
-The selected project is **Project B: Campus Rental (Housing)**.
+Code, configurations, documentation, and supporting resources will be added as weekly course assignments are completed.
 
 ## Technology Stack
 
@@ -94,13 +94,21 @@ Expected response:
 }
 ```
 
+### Code Quality
+
+Run ESLint to perform static code analysis:
+
+```bash
+npm run lint
+```
+
+A successful lint check will complete without reporting any errors.
+
 ## Project Status
 
-**Current Status:** Initial project setup
+**Current Status:** Active Course Development
 
-**Selected Project:** Project B: Campus Rental (Housing)
-
-The application is currently in the initial development phase. Additional functionality will be implemented throughout the course.
+This repository will be updated throughout SWENG 861 as weekly assignments, exercises, and development activities are completed.
 
 ## AI Use
 
