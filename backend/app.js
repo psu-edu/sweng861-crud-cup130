@@ -1,6 +1,9 @@
 require("dotenv").config();
 
 const express = require("express");
+const requireAuth = require("./middleware/requireAuth");
+const syncUser = require("./middleware/syncUser");
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -13,11 +16,35 @@ app.get("/health", (req, res) => {
 });
 
 /*
- * Hello endpoint used to demonstrate basic API routing and JSON responses.
- * A successful request returns HTTP 200 with a Hello World message.
+ * Protected hello endpoint.
+ * Requires a valid Auth0 access token and authenticated local user.
  */
-app.get("/api/hello", (req, res) => {
-  res.status(200).json({ message: "Hello, World!" });
+app.get("/api/hello", requireAuth, syncUser, (req, res) => {
+  const identifier = req.user.email || req.user.display_name || "user";
+
+  res.status(200).json({
+    message: `Hello, ${identifier}!`,
+  });
+});
+
+/*
+ * Returns a generic authentication response without exposing
+ * internal token validation details.
+ */
+app.use((err, req, res, next) => {
+  if (err.status === 401) {
+    return res.status(401).json({
+      error: "Unauthorized",
+      message: "Valid access token is required",
+    });
+  }
+
+  console.error("Unhandled application error:", err);
+
+  return res.status(500).json({
+    error: "Internal Server Error",
+    message: "An unexpected error occurred",
+  });
 });
 
 /*
