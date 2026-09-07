@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const requireAuth = require("./middleware/requireAuth");
 const syncUser = require("./middleware/syncUser");
+const { upsertUser } = require("./repositories/userRepository");
 const { auth } = require("express-openid-connect");
 
 const app = express();
@@ -24,6 +25,19 @@ const oidcConfig = {
     response_type: "code",
     audience: process.env.AUTH0_AUDIENCE,
     scope: "openid profile email",
+  },
+
+  async afterCallback(req, res, session) {
+    const claims = session.user;
+
+    await upsertUser({
+      authProvider: "auth0",
+      providerUserId: claims.sub,
+      email: claims.email || null,
+      displayName: claims.name || null,
+    });
+
+    return session;
   },
 };
 
@@ -72,7 +86,7 @@ app.get("/api/hello", requireAuth, syncUser, (req, res) => {
  * Returns a generic authentication response without exposing
  * internal token validation details.
  */
-app.use((err, req, res) => {
+app.use((err, req, res, _next) => {
   if (err.status === 401) {
     return res.status(401).json({
       error: "Unauthorized",

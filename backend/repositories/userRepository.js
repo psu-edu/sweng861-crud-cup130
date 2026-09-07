@@ -20,8 +20,8 @@ async function upsertUser({
     VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP)
     ON CONFLICT (auth_provider, provider_user_id)
     DO UPDATE SET
-      email = EXCLUDED.email,
-      display_name = EXCLUDED.display_name,
+      email = COALESCE(EXCLUDED.email, users.email),
+      display_name = COALESCE(EXCLUDED.display_name, users.display_name),
       updated_at = CURRENT_TIMESTAMP,
       last_login_at = CURRENT_TIMESTAMP
     RETURNING
