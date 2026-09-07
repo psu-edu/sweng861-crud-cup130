@@ -17,6 +17,9 @@ The project will primarily use the following technologies:
 * **Node.js** – Application runtime
 * **JavaScript** – Primary programming language
 * **Express** – Backend web application framework
+* **PostgreSQL** – Relational database for application data
+* **Auth0** – External identity provider for OIDC authentication
+* **Docker / Docker Compose** – Local application and database environment
 * **Git** – Source control
 * **GitHub** – Repository hosting and collaboration
 * **ESLint** – Static code analysis and linting
@@ -78,7 +81,7 @@ http://localhost:3000
 The following endpoints are currently available:
 
 * `GET /health` – Verifies that the API is running and returns a status response.
-* `GET /api/hello` – Returns a simple "Hello, World!" response.
+* `GET /api/hello` – Protected endpoint that requires a valid Auth0 access token and returns a personalized greeting.
 
 Example:
 
@@ -103,6 +106,28 @@ npm run lint
 ```
 
 A successful lint check will complete without reporting any errors.
+
+## Authentication and API Security
+
+### Authentication Strategy
+
+The application uses **Option B: External Identity Provider / OIDC** with Auth0. Auth0 handles user authentication and issues access tokens, allowing the application to avoid storing or validating user passwords directly.
+
+After a successful login, the authenticated user's provider ID, email, and display name are created or updated in the local PostgreSQL `users` table.
+
+### Login Flow
+
+The user initiates authentication through the application's `/login` route and is redirected to Auth0 Universal Login. After successful authentication, Auth0 redirects the user back to the application through `/callback`.
+
+The authenticated Auth0 identity is synchronized with the local PostgreSQL user record. Protected API requests provide the Auth0 access token using the `Authorization: Bearer <token>` header.
+
+The `GET /api/hello` endpoint uses authentication middleware to validate the token before allowing access. Requests without a valid token return `401 Unauthorized`.
+
+### OWASP API Security Practices
+
+**Broken Authentication:** Authentication is delegated to Auth0 using OIDC. Protected API requests require a valid Auth0 access token, which is validated for the expected issuer and audience before the request reaches the protected endpoint. Authentication failures return a generic `401 Unauthorized` response without exposing internal validation details.
+
+**Broken Object Level Authorization (BOLA):** The application derives the authenticated user's identity from the validated Auth0 token rather than accepting a user ID supplied by the client. The trusted provider user ID is then used to associate the request with the corresponding local user record.
 
 ## Project Status
 
