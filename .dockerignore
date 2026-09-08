@@ -1,0 +1,26 @@
+# Node.js dependencies
+node_modules
+
+# npm logs
+npm-debug.log
+
+# Git
+.git
+.gitignore
+.github
+
+# Environment files / secrets
+.env
+.env.*
+!.env.example
+
+# Test coverage
+coverage
+.nyc_output
+
+# IDE settings
+.vscode
+.idea
+
+# Documentation
+README.md
